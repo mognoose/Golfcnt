@@ -140,7 +140,7 @@ h2 {
 .menuItem{
   width: 100%;
   font-size: calc(1rem + 2vw);
-  background-color: rgba(0,0,0,.3);
+  background-color: rgba(255,255,255,.05);
   color: #FFFFFF;
   border: 0px;
   margin-top: .5rem;
