@@ -1,10 +1,14 @@
-let players = [
+
+let defaultPlayers = [
   {id:1, name: "Player 1", count: 0, color: 'darkcyan'},
   {id:2, name: "Player 2", count: 0, color: 'darkorchid'},
   {id:3, name: "Player 3", count: 0, color: 'darkorange'},
   {id:4, name: "Player 4", count: 0, color: 'darkslategrey'},
   {id:5, name: "Player 4", count: 0, color: 'darkolivegreen'},
 ]
+
+let players = localStorage.players ? JSON.parse(localStorage.getItem('players')): defaultPlayers
+
 const upArrow = '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>'
 const downArrow = '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>'
 
@@ -20,11 +24,13 @@ const addPoint = function(playerId){
   let i = players.findIndex((player => player.id === playerId))
   players[i].count++
   document.getElementById('player'+playerId).getElementsByTagName('H1')[0].innerText = players[i].count
+  save()
 }
 const subPoint = function(playerId){
   let i = players.findIndex((player => player.id === playerId))
   players[i].count--
   document.getElementById('player'+playerId).getElementsByTagName('H1')[0].innerText = players[i].count
+  save()
 }
 
 const nameChange = function(id){
@@ -42,9 +48,14 @@ const setName = function(){
   players[i].name = name
   document.getElementById('player'+id).getElementsByTagName('H2')[0].innerText = name
   document.getElementById('nameChange').style.display = "none"
+  save()
 }
 const cancelNameChange = function(){
   document.getElementById('nameChange').style.display = "none"
+}
+
+const save = function(){
+  localStorage.setItem('players', JSON.stringify(players))
 }
 
 init()
