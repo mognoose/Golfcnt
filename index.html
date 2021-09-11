@@ -12,18 +12,21 @@
   <div id="app">
 
   </div>
-  <a href="#" class="menuButton" onclick="openMenu()" style="display: none;"></a>
+  <a href="#" class="menuButton" onclick="openMenu()"></a>
   <div id="nameChange">
-    <a href="#" class="closeButton" onclick="cancelNameChange()"></a>
-    <input id="nameChangeInput" type="text">
-    <input id="nameChangeInputId" type="hidden">
-    <!-- <button onclick="cancelNameChange()">Cancel</button> -->
-    <button onclick="setName()">Ok</button>
+    <div class="p-5">
+      <a href="#" class="closeButton" onclick="cancelNameChange()"></a>
+      <input id="nameChangeInput" type="text">
+      <input id="nameChangeInputId" type="hidden">
+      <button onclick="setName()">Ok</button>
+    </div>
   </div>
   <div id="menu">
     <a href="#" class="closeButton" onclick="closeMenu()"></a>
-    <button onclick="resetCount()">Reset Counters</button>
-    <button onclick="resetAll()">Reset All</button>
+    <div class="pt-5">
+      <button class="menuItem" onclick="resetCount()">Reset Counters</button>
+      <button class="menuItem" onclick="resetAll()">Reset All</button>
+    </div>
   </div>
 
 </body>
