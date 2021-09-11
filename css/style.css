@@ -82,7 +82,7 @@ h2 {
 }
 
 #nameChange {
-  display: block;
+  display: none;
   position: absolute;
   padding: 5rem;
   top:0px;
