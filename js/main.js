@@ -30,11 +30,9 @@ const subPoint = function(playerId){
 const nameChange = function(id){
   let i = players.findIndex((player => player.id === id))
   let name = players[i].name
-  console.log('name:',name)
   document.getElementById('nameChange').style.display = "block"
   document.getElementById('nameChangeInput').value = name
   document.getElementById('nameChangeInputId').value = id
-  console.log("asd: ",id);
 }
 
 const setName = function(){
@@ -44,9 +42,9 @@ const setName = function(){
   players[i].name = name
   document.getElementById('player'+id).getElementsByTagName('H2')[0].innerText = name
   document.getElementById('nameChange').style.display = "none"
-
-
-
+}
+const cancelNameChange = function(){
+  document.getElementById('nameChange').style.display = "none"
 }
 
 init()
