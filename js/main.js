@@ -24,7 +24,7 @@ let app = document.getElementById('app')
 const init = function(){
   app.innerHTML=""
   players.forEach(player => {
-    app.innerHTML= app.innerHTML+'<section id="player'+player.id+'" style="background-color: '+player.color+';"><p class="topButton"><button onclick="addPoint('+player.id+')">'+upArrow+'</button></p><h1>'+player.count+'</h1><p class="bottomButton"><button onclick="subPoint('+player.id+')">'+downArrow+'</button></p><h2 oncontextmenu="nameChange('+player.id+');return false;">'+player.name+'</h2></section>'
+    app.innerHTML= app.innerHTML+'<section id="player'+player.id+'" style="background-color: '+player.color+';"><p class="topButton"><button onclick="addPoint('+player.id+')">'+upArrow+'</button></p><h1 oncontextmenu="setCount('+player.id+');return false;">'+player.count+'</h1><p class="bottomButton"><button onclick="subPoint('+player.id+')">'+downArrow+'</button></p><h2 oncontextmenu="nameChange('+player.id+');return false;">'+player.name+'</h2></section>'
   });
 }
 
@@ -37,6 +37,13 @@ const addPoint = function(playerId){
 const subPoint = function(playerId){
   let i = players.findIndex((player => player.id === playerId))
   players[i].count--
+  document.getElementById('player'+playerId).getElementsByTagName('H1')[0].innerText = players[i].count
+  save()
+}
+
+const setCount = function(playerId){
+  let i = players.findIndex((player => player.id === playerId))
+  players[i].count = 0
   document.getElementById('player'+playerId).getElementsByTagName('H1')[0].innerText = players[i].count
   save()
 }
